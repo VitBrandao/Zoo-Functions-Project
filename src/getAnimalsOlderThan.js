@@ -1,15 +1,22 @@
-// const data = require('../data/zoo_data');
+const data = require('../data/zoo_data');
 
-// function getAnimalsOlderThan(animal, age) {
-//   const originalArray = data;
+function getAnimalsOlderThan(animal, age) {
+  const animalName = data.species.find((value) => animal.includes(value.name));
+  const animalList = animalName.residents;
 
-//   const animalAge = originalArray.every((value) => {
-//     value.residents.age === age
-//   })
-// }
+  let cont = 0;
+  for (let index = 0; index < animalList.length; index += 1) {
+    if (animalList[index].age >= age) {
+      cont += 1;
+    }
+  }
 
-// module.exports = getAnimalsOlderThan;
+  if (cont === animalList.length) {
+    return true;
+  }
 
-// console.log(getAnimalsOlderThan('lions', 34));
+  return false;
+}
+module.exports = getAnimalsOlderThan;
 
-// // console.log(data.species[0]);
+console.log(getAnimalsOlderThan('bears', 4));

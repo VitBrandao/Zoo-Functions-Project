@@ -1,6 +1,7 @@
 const getSchedule = require('../src/getSchedule');
 
 describe('8 - Crie o agendamento que disponibilize as informações de horário dos animais com o dia que os animais estão disponíveis', () => {
+  // TESTE 1 - ok
   it('sem parâmetros, retorna os horários para cada dia e quais animais estarão disponíveis', () => {
     const actual = getSchedule();
 
@@ -40,6 +41,7 @@ describe('8 - Crie o agendamento que disponibilize as informações de horário 
     expect(actual).toEqual(expected);
   });
   
+  // TESTE 2
   it('caso os parâmetros não seja um animal e dia, retorna um objeto com os horários do dia e os animais em exibição', () => {
     const actual = getSchedule('qualquercoisa');
 
@@ -79,6 +81,7 @@ describe('8 - Crie o agendamento que disponibilize as informações de horário 
     expect(actual).toEqual(expected);
   });
 
+  // TESTE 3 -ok
   it('se "Monday" for passado por parâmetro, deverá informar que o zoológico está fechado', () => {
     const actual = getSchedule('Monday');
 
@@ -89,6 +92,7 @@ describe('8 - Crie o agendamento que disponibilize as informações de horário 
     expect(actual).toEqual(expected);
   });
 
+  // TESTE 4 - ok
   it('se um dia for passado, retorna somente o horário daquele expediente e os animais em exibição no dia', () => {
   {
     const actual = getSchedule('Tuesday');
@@ -118,6 +122,7 @@ describe('8 - Crie o agendamento que disponibilize as informações de horário 
 
   });
 
+  // TESTE 5 - ok
   it('se for passado um animal, deverá retornar um array com os dias em que ele está em exibição', () => {
     {
       const actual = getSchedule('lions');

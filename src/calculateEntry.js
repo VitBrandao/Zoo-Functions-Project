@@ -10,10 +10,6 @@ const data = require('../data/zoo_data');
 // ];
 
 function countEntrants(entrants) {
-  if (entrants === undefined || Object.keys(entrants).length === 0) {
-    return 0;
-  }
-
   const finalObject = { child: 0, adult: 0, senior: 0 };
   entrants.forEach((person) => {
     if (person.age < 18) {
@@ -43,3 +39,8 @@ function calculateEntry(entrants) {
 }
 
 module.exports = { calculateEntry, countEntrants };
+
+// maldito ternary
+// person.age < 18 ? finalObject.child += 1 : finalObject.child += 0;
+// person.age >= 18 && person.age < 50 ? finalObject.adult += 1 : finalObject.adult += 0;
+// person.age >= 50 ? finalObject.senior += 1 : finalObject.senior += 0;

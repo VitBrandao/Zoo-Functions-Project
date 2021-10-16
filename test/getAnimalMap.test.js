@@ -1,6 +1,7 @@
 const getAnimalMap = require('../src/getAnimalMap');
 
 describe('7 - Crie um mapeamento geográfico das espécies e seus animais', () => {
+  //TESTE 1 - ok
   it('sem parâmetros, retorna animais categorizados por localização', () => {
     const actual = getAnimalMap();
 
@@ -14,6 +15,7 @@ describe('7 - Crie um mapeamento geográfico das espécies e seus animais', () =
     expect(actual).toEqual(expected);
   });
 
+  //TESTE 2 - sex female
   it('se somente a opção `sex: female` for especificada, retorna animais categorizados por localização', () => {
     const expected = {
       NE: ['lions', 'giraffes'],
@@ -28,6 +30,7 @@ describe('7 - Crie um mapeamento geográfico das espécies e seus animais', () =
     expect(actual).toEqual(expected);
   });
 
+  // TESTE 3 - sex female e sorted true
   it('se somente as opções `sex: female` e `sorted: true` forem especificadas, retorna animais categorizados por localização', () => {
     const expected = {
       NE: ['lions', 'giraffes'],
@@ -42,6 +45,7 @@ describe('7 - Crie um mapeamento geográfico das espécies e seus animais', () =
     expect(actual).toEqual(expected);
   });
 
+  //TESTE 4 - includesNames true
   it('com a opção `includeNames: true` especificada, retorna nomes de animais', () => {
     const options = { includeNames: true };
     const actual = getAnimalMap(options);
@@ -69,6 +73,7 @@ describe('7 - Crie um mapeamento geográfico das espécies e seus animais', () =
     expect(actual).toEqual(expected);
   });
 
+  //TESTE 5 - includeNames true, sorted true
   it('com a opção `sorted: true` especificada, retorna nomes de animais ordenados', () => {
     const options = { includeNames: true, sorted: true };
     const actual = getAnimalMap(options);
@@ -95,6 +100,7 @@ describe('7 - Crie um mapeamento geográfico das espécies e seus animais', () =
     expect(actual).toEqual(expected);
   });
 
+  // TESTE 6 - includeNames true, sex female
   it('com a opção `sex: \'female\'` ou `sex: \'male\'` especificada, retorna somente nomes de animais macho/fêmea', () => {
     const options = { includeNames: true, sex: 'female' };
     const actual = getAnimalMap(options);
@@ -122,6 +128,7 @@ describe('7 - Crie um mapeamento geográfico das espécies e seus animais', () =
     expect(actual).toEqual(expected);
   });
 
+  //TESTE 7 - 3 opções
   it('com a opção `sex: \'female\'` ou `sex: \'male\'` especificada e a opção `sort: true` especificada, retorna somente nomes de animais macho/fêmea com os nomes dos animais ordenados', () => {
     const options = { includeNames: true, sex: 'female', sorted: true };
     const actual = getAnimalMap(options);

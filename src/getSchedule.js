@@ -70,7 +70,6 @@ function findDay(day) {
 
 // Para animais
 function findAnimal(animal) {
-  const verifyAnimal = data.species.some((animalValue) => animalValue.name === animal);
   const findAnimals = data.species.find((specie) => {
     if (specie.name === animal) {
       return specie;
@@ -139,4 +138,18 @@ function getSchedule(...parameters) {
 }
 
 module.exports = getSchedule;
-console.log(getSchedule('penguins'));
+
+// CONSERTANDO GetSchedule()
+
+// console.log(getSchedule('penguins'));
+// console.log(Object.values(data.hours));
+
+// let exhibitionAnimals = [];
+// Object.keys(data.hours).forEach((day) => {
+//   data.species.find((specie) => {
+//     if (specie.availability.includes(day)) {
+//       exhibitionAnimals.push(specie.name);
+//     }
+//   })
+// })
+// console.log(exhibitionAnimals);

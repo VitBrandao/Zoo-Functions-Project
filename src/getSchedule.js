@@ -1,6 +1,72 @@
 const data = require('../data/zoo_data');
-const externalObject = require('../data/fullSchedule');
-const externalObject2 = require('../data/completedSchedule');
+
+const officeHourText = 'Open from 8am until 6pm';
+const officeHourText2 = 'Open from 10am until 8pm';
+const closedZooText = 'The zoo will be closed!';
+const externalObject = {
+  Tuesday: {
+    officeHour: officeHourText,
+    exhibition: ['lions', 'tigers', 'bears', 'penguins', 'elephants', 'giraffes'],
+  },
+  Wednesday: {
+    officeHour: officeHourText,
+    exhibition: ['tigers', 'bears', 'penguins', 'otters', 'frogs', 'giraffes'],
+  },
+  Thursday: {
+    officeHour: officeHourText2,
+    exhibition: ['lions', 'otters', 'frogs', 'snakes', 'giraffes'],
+  },
+  Friday: {
+    officeHour: officeHourText2,
+    exhibition: ['tigers', 'otters', 'frogs', 'snakes', 'elephants', 'giraffes'],
+  },
+  Saturday: {
+    officeHour: 'Open from 8am until 10pm',
+    exhibition: [
+      'lions', 'tigers',
+      'bears', 'penguins',
+      'otters', 'frogs',
+      'snakes', 'elephants',
+    ],
+  },
+  Sunday: {
+    officeHour: 'Open from 8am until 8pm',
+    exhibition: ['lions', 'bears', 'penguins', 'snakes', 'elephants'],
+  },
+  Monday: { officeHour: 'CLOSED', exhibition: closedZooText },
+};
+const externalObject2 = {
+  Tuesday: {
+    officeHour: officeHourText,
+    exhibition: ['lions', 'tigers', 'bears', 'penguins', 'elephants', 'giraffes'],
+  },
+  Wednesday: {
+    officeHour: officeHourText,
+    exhibition: ['tigers', 'bears', 'penguins', 'otters', 'frogs', 'giraffes'],
+  },
+  Thursday: {
+    officeHour: officeHourText2,
+    exhibition: ['lions', 'otters', 'frogs', 'snakes', 'giraffes'],
+  },
+  Friday: {
+    officeHour: officeHourText2,
+    exhibition: ['tigers', 'otters', 'frogs', 'snakes', 'elephants', 'giraffes'],
+  },
+  Saturday: {
+    officeHour: 'Open from 8am until 10pm',
+    exhibition: [
+      'lions', 'tigers',
+      'bears', 'penguins',
+      'otters', 'frogs',
+      'snakes', 'elephants',
+    ],
+  },
+  Sunday: {
+    officeHour: 'Open from 8am until 8pm',
+    exhibition: ['lions', 'bears', 'penguins', 'snakes', 'elephants'],
+  },
+  Monday: { officeHour: 'CLOSED', exhibition: closedZooText },
+};
 
 // Para nenhum parâmetro
 function completeSchedule() {
@@ -11,7 +77,7 @@ function completeSchedule() {
 // Para 'Monday'
 function itsMonday() {
   const mondayMessage = {
-    Monday: { officeHour: 'CLOSED', exhibition: 'The zoo will be closed!' },
+    Monday: { officeHour: 'CLOSED', exhibition: closedZooText },
   };
 
   return mondayMessage;
@@ -22,7 +88,7 @@ function findDay(day) {
   if (day === 'Tuesday') {
     const hoursOfTuesday = {
       Tuesday: {
-        officeHour: 'Open from 8am until 6pm',
+        officeHour: officeHourText,
         exhibition: ['lions', 'tigers', 'bears', 'penguins', 'elephants', 'giraffes'],
       },
     };
@@ -31,7 +97,7 @@ function findDay(day) {
   if (day === 'Wednesday') {
     const hoursOfWednesday = {
       Wednesday: {
-        officeHour: 'Open from 8am until 6pm',
+        officeHour: officeHourText,
         exhibition: ['tigers', 'bears', 'penguins', 'otters', 'frogs', 'giraffes'],
       },
     };

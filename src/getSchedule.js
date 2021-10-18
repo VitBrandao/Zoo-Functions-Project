@@ -1,39 +1,10 @@
 const data = require('../data/zoo_data');
+const externalObject = require('../data/fullSchedule');
+const externalObject2 = require('../data/completedSchedule');
 
 // Para nenhum parâmetro
 function completeSchedule() {
-  const fullSchedule = {
-    Tuesday: {
-      officeHour: 'Open from 8am until 6pm',
-      exhibition: ['lions', 'tigers', 'bears', 'penguins', 'elephants', 'giraffes'],
-    },
-    Wednesday: {
-      officeHour: 'Open from 8am until 6pm',
-      exhibition: ['tigers', 'bears', 'penguins', 'otters', 'frogs', 'giraffes'],
-    },
-    Thursday: {
-      officeHour: 'Open from 10am until 8pm',
-      exhibition: ['lions', 'otters', 'frogs', 'snakes', 'giraffes'],
-    },
-    Friday: {
-      officeHour: 'Open from 10am until 8pm',
-      exhibition: ['tigers', 'otters', 'frogs', 'snakes', 'elephants', 'giraffes'],
-    },
-    Saturday: {
-      officeHour: 'Open from 8am until 10pm',
-      exhibition: [
-        'lions', 'tigers',
-        'bears', 'penguins',
-        'otters', 'frogs',
-        'snakes', 'elephants',
-      ],
-    },
-    Sunday: {
-      officeHour: 'Open from 8am until 8pm',
-      exhibition: ['lions', 'bears', 'penguins', 'snakes', 'elephants'],
-    },
-    Monday: { officeHour: 'CLOSED', exhibition: 'The zoo will be closed!' },
-  };
+  const fullSchedule = externalObject;
   return fullSchedule;
 }
 
@@ -70,50 +41,28 @@ function findDay(day) {
 
 // Para animais
 function findAnimal(animal) {
-  const findAnimals = data.species.find((specie) => {
-    if (specie.name === animal) {
-      return specie;
-    }
-  });
+  const findAnimals = data.species.find((specie) => specie.name === animal);
   return findAnimals.availability;
 }
 
 // Para quando não é um dia nem um animal
 function undefinedParameter() {
-  const completedSchedule = {
-    Tuesday: {
-      officeHour: 'Open from 8am until 6pm',
-      exhibition: ['lions', 'tigers', 'bears', 'penguins', 'elephants', 'giraffes'],
-    },
-    Wednesday: {
-      officeHour: 'Open from 8am until 6pm',
-      exhibition: ['tigers', 'bears', 'penguins', 'otters', 'frogs', 'giraffes'],
-    },
-    Thursday: {
-      officeHour: 'Open from 10am until 8pm',
-      exhibition: ['lions', 'otters', 'frogs', 'snakes', 'giraffes'],
-    },
-    Friday: {
-      officeHour: 'Open from 10am until 8pm',
-      exhibition: ['tigers', 'otters', 'frogs', 'snakes', 'elephants', 'giraffes'],
-    },
-    Saturday: {
-      officeHour: 'Open from 8am until 10pm',
-      exhibition: [
-        'lions', 'tigers',
-        'bears', 'penguins',
-        'otters', 'frogs',
-        'snakes', 'elephants',
-      ],
-    },
-    Sunday: {
-      officeHour: 'Open from 8am until 8pm',
-      exhibition: ['lions', 'bears', 'penguins', 'snakes', 'elephants'],
-    },
-    Monday: { officeHour: 'CLOSED', exhibition: 'The zoo will be closed!' },
-  };
+  const completedSchedule = externalObject2;
 
   return completedSchedule;
+}
+
+// Quebrando função principal para reduzir complexidade
+function nextFunction(parameter) {
+  if (parameter === 'Tuesday' || parameter === 'Wednesday') {
+    return findDay(parameter);
+  }
+
+  if (parameter === 'lions' || parameter === 'penguins') {
+    return findAnimal(parameter);
+  }
+
+  return undefinedParameter();
 }
 
 // FUNÇÃO PRINCIPAL
@@ -122,22 +71,16 @@ function getSchedule(...parameters) {
     return completeSchedule();
   }
 
-  if (parameters.includes('Monday')) {
+  if (parameters[0] === 'Monday') {
     return itsMonday();
   }
 
-  if (parameters[0] === 'Tuesday' || parameters[0] === 'Wednesday') {
-    return findDay(parameters[0]);
-  }
-
-  if (parameters[0] === 'lions' || parameters[0] === 'penguins') {
-    return findAnimal(parameters[0]);
-  }
-
-  return undefinedParameter();
+  return nextFunction(parameters[0]);
 }
 
 module.exports = getSchedule;
+
+// console.log(getSchedule('Monday'));
 
 // CONSERTANDO GetSchedule()
 

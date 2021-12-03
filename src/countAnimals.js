@@ -1,11 +1,9 @@
 const data = require('../data/zoo_data');
 // const getAnimalsOlderThan = require('./getAnimalsOlderThan');
-
+const dataSpecies = data.species;
 function checkObject(animal) {
-  const dataSpecies = data.species;
-
   const checkAnimal = dataSpecies.find((value) => value.name === animal.specie);
-  console.log(checkAnimal)
+  console.log(checkAnimal);
   if (Object.keys(animal).length === 1) {
     const totalAnimals = checkAnimal.residents.length;
     return totalAnimals;
@@ -24,8 +22,6 @@ function checkObject(animal) {
 }
 
 function countAnimals(animal) {
-  const dataSpecies = data.species;
-
   if (animal === undefined) {
     const totalNumbers = {};
     for (let index = 0; index < dataSpecies.length; index += 1) {

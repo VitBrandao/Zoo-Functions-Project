@@ -5,6 +5,7 @@ function checkObject(animal) {
   const dataSpecies = data.species;
 
   const checkAnimal = dataSpecies.find((value) => value.name === animal.specie);
+  console.log(checkAnimal)
   if (Object.keys(animal).length === 1) {
     const totalAnimals = checkAnimal.residents.length;
     return totalAnimals;
